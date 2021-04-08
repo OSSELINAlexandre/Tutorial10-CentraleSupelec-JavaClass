@@ -1,4 +1,4 @@
-package Exercise2;
+package Question7;
 
 import java.util.ArrayList;
 import java.util.concurrent.locks.Lock;
@@ -86,11 +86,27 @@ public class DiningPhilosophers {
 	public void setAmountFood(int amountFood) {
 		this.amountFood = amountFood;
 	}
+	
+	public boolean checkThreadJoin(Philosopher A) {
+		
+		for(Philosopher p : dinningPhilosophers) {
+			
+			if(p == A) {
+				
+			}else {
+				
+				if(p.getThreadIsFinished() == false)
+					return false;
+			}
+		}
+		return true;
+	}
+	
 
 	public static void main(String[] args) {
 
 		ArrayList<Chopstick> theLot = new ArrayList<>();
-		DiningPhilosophers dinningPhi = new DiningPhilosophers(20, 5, 7);
+		DiningPhilosophers dinningPhi = new DiningPhilosophers(200, 5, 7);
 		Chopstick n1 = new Chopstick();
 		Chopstick n2 = new Chopstick();
 		Chopstick n3 = new Chopstick();
@@ -113,25 +129,30 @@ public class DiningPhilosophers {
 		Scruton.start();
 		Platon.start();
 		Aquin.start();
-
+		
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// Security to be asure that all thread are finished. 
+			e.printStackTrace();
+		}
+		
+		System.out.println("Philosopher : " + Socrate.getName() + "eaten : " + Socrate.getAlreadyEaten() + ", max possible to eat : " + Socrate.getMaxAmountPossibleToEat());
+		System.out.println("Philosopher : " + Platon.getName() + "eaten : " + Platon.getAlreadyEaten() + ", max possible to eat : " + Platon.getMaxAmountPossibleToEat());
+		System.out.println("Philosopher : " + Scruton.getName() + "eaten : " + Scruton.getAlreadyEaten() + ", max possible to eat : " + Scruton.getMaxAmountPossibleToEat());
+		System.out.println("Philosopher : " + Aquin.getName() + "eaten : " + Aquin.getAlreadyEaten() + ", max possible to eat : " + Aquin.getMaxAmountPossibleToEat());
+		System.out.println("Philosopher : " + Peterson.getName() + "eaten : " + Peterson.getAlreadyEaten() + ", max possible to eat : " + Peterson.getMaxAmountPossibleToEat());
 
 	}
 
 }
 
-// Q1 done;
-//
-//Q2 : When we delete the different times of thinking or eating, a thread tend to have a dominance once he got into the loop and tend to be the only one able to run the runnable
-//It seems as if they were a fraction of second in which another thread could get the dominance in the runnable. So it is far from being fair. 
-//
-//Q3 : To avoid this situation, it is possible to create an equivalent 'visited node' arrayList to check if one philosopher has eaten or not. 
-//
-//
-//
-//Q6 : if the amount of food is limited, multiple issues could arise, but mostly Thread Interferences
-//A simple ay to deal with these situation is to create lock whenever a block of code needs synchronization.		
-//A second issue could be in the logic of the program : there could be no fairess between Philosophers. 		
-//There is also problems regarding the atomicity of transactions (see the code).		
-//		 
-//
 
