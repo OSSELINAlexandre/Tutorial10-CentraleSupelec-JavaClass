@@ -1,7 +1,7 @@
 # Dinning Philosopher
 
 
-Imagine your N favorite philosopher having a dinner together. They are sitting around a round table and N chopsticks are displayed : in order to eat, a philosopher have to wait for the chopsticks on his right and on his left to be available (in other words, he cannot eat while his direct neighbors are eating). Their purpose is to think, eat, and think again. 
+Imagine your N favorites philosophers having a dinner together. They are sitting around a round table and N chopsticks are displayed : in order to eat, a philosopher have to wait for the chopsticks on his right and on his left to be available (in other words, he cannot eat while his direct neighbors are eating). Their purpose is to think, eat, and think again. 
 
 ## The Runnable
 
